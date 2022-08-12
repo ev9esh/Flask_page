@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title%}Hello{% endblock %}
+
+{% block content %}
     <p> Name: {{name}} </p>
     <p> Age: {{age}} </p>
     <p> Profession: {{prof}} </p>
-</body>
-</html>
+{% endblock %}
