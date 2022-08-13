@@ -13,8 +13,7 @@ class Article(db.Model):
     title = db.Column(db.String(100), nullable=False)
     intro = db.Column(db.String(300), nullable=False)
     text = db.Column(db.Text, nullable=False)
-    created_on = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_on = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return '<Article %r' % self.id
@@ -35,8 +34,8 @@ def about():
 
 @app.route('/posts')
 def posts():
-    articles = Article.query.order_by(Article.created_on).all()
-    return render_template('posts.html', article=articles)
+    articles = Article.query.order_by(Article.date).all()
+    return render_template('posts.html', articles=articles)
 
 
 @app.route('/create-article', methods=['POST', 'GET'])
@@ -51,7 +50,7 @@ def create_article():
         try:
             db.session.add(article)
             db.session.commit()
-            return redirect('/')
+            return redirect('/posts')
         except:
             return 'При добалении статьи произошла ошибка'
     else:
