@@ -3,14 +3,20 @@
 {% block title%}Все статьи на сайте{% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="row">
         <h3>Все статьи на сайте</h3>
         {% for el in articles %}
-        <div class="alert alert-info">
-            <h2>{{ el.title }}</h2>
-            <p> {{ el.intro }}</p>
-            <p><b>{{ el.date.date() }}</b></p>
-            <button class="btn btn-warning">Детальнее</button>
+        <div class="col-md-4">
+            <div class="p-3 mb-2 bg-primary text-black">
+            <div class="card md-4">
+                <div class="card body">
+                    <h2 class="card title">{{ el.title }}</h2>
+                    <p class="card text">{{ el.intro }}</p>
+                    <p><b>{{ el.date.date() }}</b></p>
+                    <a class="btn btn-warning">Детальнее</a>
+                </div>
+            </div>
+            </div>
         </div>
         {% endfor %}
     </div>
