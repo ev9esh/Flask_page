@@ -9,7 +9,8 @@
             <h3> {{ article.text }} </h3>
             <p> {{ article.info }}</p>
             <p><b>Дата публикации: {{ article.date.date() }} </b></p>
-
+            <a href="/posts/{{ article.id }}/delete" class="btn btn-warning">Удалить</a>
+            <a href="/posts/{{ article.id }}/update" class="btn btn-warning">Редактировать</a>
         </div>
     </div>
 </section>
