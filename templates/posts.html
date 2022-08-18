@@ -6,6 +6,7 @@
 <section class="container text-center">
     <div class="list-group w-auto">
         <h3>Все статьи на сайте</h3>
+        {% if articles|length > 0 %}
         {% for el in articles %}
             <a href="/posts/{{ el.id }}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
                 <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
@@ -17,19 +18,10 @@
                         <small class="opacity-50 text-nowrap">{{ el.date.date() }}</small>
                 </div>
             </a>
-<!--        <div class="col-md-4">-->
-<!--            <div class="p-3 mb-2 bg-primary text-black">-->
-<!--            <div class="card md-4">-->
-<!--                <div class="card body">-->
-<!--                    <h2 class="card title">{{ el.title }}</h2>-->
-<!--                    <p class="card text">{{ el.intro }}</p>-->
-<!--                    <p><b>{{ el.date.date() }}</b></p>-->
-<!--                    <a class="btn btn-warning">Детальнее</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            </div>-->
-<!--        </div>-->
         {% endfor %}
+        {% else %}
+        <p>У вас еще нет статей на сайте</p>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
